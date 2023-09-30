@@ -9,8 +9,8 @@ export default function Home() {
   const fetchCountries = async () => {
     const response = await fetch("/api/countries");
 
-    const data = await response.json();
-    setCountries(data);
+    const responseData = await response.json();
+    setCountries(responseData.data);
   };
 
   const toogleCountriesSelect = () => {
@@ -23,17 +23,22 @@ export default function Home() {
 
   return (
     <div>
-      <div className="container mx-auto mt-5">
+      <div className="container mx-auto mt-5 px-4">
         <div ref={setAnchor}>
           <label htmlFor="country_name" className="block mb-2 text-sm font-medium text-white">Country name</label>
           <input
             onClick={toogleCountriesSelect} 
             type="text" 
             id="country_name" 
-            className="text-sm rounded-lg w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:outline-none focus:ring-1 focus:border-blue-400" 
+            className={`text-sm ${countriesSelectVisible ? 'rounded-b-none' : '' } rounded-lg w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:outline-none focus:ring-1 focus:border-blue-400`}
             placeholder="Select your country"
           />
-          <Dropdown anchor={anchor} visible={countriesSelectVisible}/>
+          <Dropdown 
+            anchor={anchor} 
+            visible={countriesSelectVisible} 
+            items={countries}
+            toggleVisibility={toogleCountriesSelect}
+          />
         </div>
       </div>
     </div>
