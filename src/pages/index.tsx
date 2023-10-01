@@ -17,6 +17,14 @@ export default function Home() {
     setCountriesSelectVisibile(!countriesSelectVisible);
   }
 
+  const countrySelected = async (value: string) => {
+    toogleCountriesSelect();
+    const response = await fetch("/api/countries?countryName=" + value);
+
+    const responseData = await response.json();
+    console.log(responseData.data);
+  }
+
   useEffect(() => {
     fetchCountries()
   }, []);
@@ -38,6 +46,7 @@ export default function Home() {
             visible={countriesSelectVisible} 
             items={countries}
             toggleVisibility={toogleCountriesSelect}
+            selected={countrySelected}
           />
         </div>
       </div>
