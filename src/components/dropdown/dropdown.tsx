@@ -18,7 +18,7 @@ export default function Dropdown({
 }: Props) {
   const {refs, floatingStyles} = useFloating({
     whileElementsMounted: autoUpdate,
-    placement: "bottom-start",
+    placement: 'bottom-start',
     elements: {
       reference: anchor,
     },
@@ -50,7 +50,7 @@ export default function Dropdown({
                       {item.name.common}
                     </div>
                   </div>
-                )
+                );
               })
             }
           </div> 

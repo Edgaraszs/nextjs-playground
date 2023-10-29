@@ -14,5 +14,5 @@ export default function Country({ country }: Props) {
       { country.capital.length > 0 && <span>Capital: {country.capital}</span> }
       <Map/>
     </div>
-  )
+  );
 }

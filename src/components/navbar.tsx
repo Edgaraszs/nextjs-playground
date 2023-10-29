@@ -5,5 +5,5 @@ export default function Navbar() {
         <span className="cursor-pointer">Search country</span>
       </div>
     </nav>
-  )
+  );
 }

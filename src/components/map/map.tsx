@@ -1,4 +1,4 @@
-import { memo, useState, useCallback  } from 'react'
+import { memo, useState, useCallback  } from 'react';
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 
 const containerStyle = {
@@ -26,7 +26,7 @@ function Map() {
     const bounds = new window.google.maps.LatLngBounds(center);
     map.fitBounds(bounds);
 
-    setMap(map)
+    setMap(map);
   }, []);
 
   return isLoaded ? (
@@ -39,7 +39,7 @@ function Map() {
       { /* Child components, such as markers, info windows, etc. */ }
       <></>
     </GoogleMap>
-  ) : <></>
+  ) : <></>;
 }
 
 export default memo(Map);

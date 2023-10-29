@@ -4,6 +4,8 @@
     "plugin:react-hooks/recommended"
   ],
   "rules": {
-    "indent": ["error", 2]
+    "quotes": [2, "single", { "avoidEscape": true }],
+    "indent": ["error", 2],
+    "semi": ["error", "always"]
   }
 }

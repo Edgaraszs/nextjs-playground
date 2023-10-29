@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import Dropdown from '@/components/dropdown/dropdown';
 import Country from '@/components/country/country';
 
@@ -14,7 +14,7 @@ export default function Home() {
   });
  
   const fetchCountries = async () => {
-    const response = await fetch("/api/countries");
+    const response = await fetch('/api/countries');
 
     const responseData = await response.json();
     setCountries(responseData.data);
@@ -22,18 +22,18 @@ export default function Home() {
 
   const toogleCountriesSelect = () => {
     setCountriesSelectVisibile(!countriesSelectVisible);
-  }
+  };
 
   const countrySelected = async (value: string) => {
     toogleCountriesSelect();
-    const response = await fetch("/api/countries?countryName=" + value);
+    const response = await fetch('/api/countries?countryName=' + value);
 
     const responseData = await response.json();
     setCountry(responseData.data[0]);
-  }
+  };
 
   useEffect(() => {
-    fetchCountries()
+    fetchCountries();
   }, []);
 
   return (
@@ -64,5 +64,5 @@ export default function Home() {
         </div>
       </div>
     </>
-  )
+  );
 }

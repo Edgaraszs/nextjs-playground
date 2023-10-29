@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 }
 
 async function fetchAllCountries(res: NextApiResponse) {
-  const response = await fetch("https://restcountries.com/v3.1/all?fields=name")
+  const response = await fetch('https://restcountries.com/v3.1/all?fields=name');
  
   if (response.ok) {
     const countries = await response.json();
@@ -23,7 +23,7 @@ async function fetchAllCountries(res: NextApiResponse) {
 }
 
 async function fetchCountryByName(res: NextApiResponse, name: string | string[]) {
-  const response = await fetch("https://restcountries.com/v3.1/name/" + name);
+  const response = await fetch('https://restcountries.com/v3.1/name/' + name);
  
   if (response.ok) {
     const countries = await response.json();
