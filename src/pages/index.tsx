@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Dropdown from '@/components/dropdown/dropdown';
 import Country from '@/components/country/country';
+import Toastify from '@/utils/toastify/toastify';
 
 export default function Home() {
   const [countries, setCountries] = useState([]);
@@ -12,15 +13,28 @@ export default function Home() {
       common: '',
     }
   });
+  const [fetching, setFetching] = useState(false);
  
   const fetchCountries = async () => {
-    const response = await fetch('/api/countries');
+    setFetching(true);
+    try {
+      const response = await fetch('/api/countries');
 
-    const responseData = await response.json();
-    setCountries(responseData.data);
+      const responseData = await response.json();
+      setCountries(responseData.data);
+    } catch (e) {
+      new Toastify('Something went wrong').error();
+      setCountriesSelectVisibile(false);
+    } finally {
+      setFetching(false);
+    }
   };
 
   const toogleCountriesSelect = () => {
+    if (countries.length === 0 && !fetching) {
+      fetchCountries();
+    }
+    
     setCountriesSelectVisibile(!countriesSelectVisible);
   };
 
@@ -31,10 +45,6 @@ export default function Home() {
     const responseData = await response.json();
     setCountry(responseData.data[0]);
   };
-
-  useEffect(() => {
-    fetchCountries();
-  }, []);
 
   return (
     <>
