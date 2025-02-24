@@ -4,7 +4,15 @@ It is a personal project for learning purposes using React/Next.JS/Typescript.
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies
+
+```bash
+npm install
+```
+
+Create ```.env``` by copying ```.env.example```
+
+Run the development server:
 
 ```bash
 npm run dev
